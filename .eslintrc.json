@@ -1,0 +1,258 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "eslint:recommended"
+  ],
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    "curly": "error",
+    "eqeqeq": [
+      "error",
+      "always"
+    ],
+    "no-eval": "error",
+    "no-var": "error",
+    "no-empty": [
+      "error",
+      {
+        "allowEmptyCatch": true
+      }
+    ],
+    "array-bracket-newline": [
+      "error",
+      "consistent"
+    ],
+    "array-bracket-spacing": "error",
+    "array-element-newline": [
+      "error",
+      "consistent"
+    ],
+    "block-spacing": "error",
+    "brace-style": [
+      "error",
+      "1tbs",
+      {
+        "allowSingleLine": false
+      }
+    ],
+    "comma-dangle": [
+      "error",
+      "only-multiline"
+    ],
+    "comma-spacing": "error",
+    "comma-style": "error",
+    "computed-property-spacing": "error",
+    "func-call-spacing": "error",
+    "function-call-argument-newline": [
+      "error",
+      "consistent"
+    ],
+    "function-paren-newline": ["error", "multiline-arguments"],
+    "implicit-arrow-linebreak": "error",
+    "indent": [
+      "error",
+      4,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "key-spacing": "error",
+    "keyword-spacing": "error",
+    "linebreak-style": [
+      "error",
+      "windows"
+    ],
+    "lines-around-comment": "off",
+    "lines-between-class-members": [
+      "error",
+      "always",
+      {
+        "exceptAfterSingleLine": true
+      }
+    ],
+    "no-extra-parens": "error",
+    "no-extra-semi": "error",
+    "multiline-ternary": [
+      "error",
+      "always-multiline"
+    ],
+    "new-parens": "error",
+    "no-multiple-empty-lines": "error",
+    "no-trailing-spaces": "error",
+    "no-whitespace-before-property": "error",
+    "nonblock-statement-body-position": "error",
+    "object-curly-newline": "error",
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
+    "operator-assignment": "error",
+    "operator-linebreak": [
+      "error",
+      "before"
+    ],
+    "prefer-object-spread": "error",
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "quote-props": [
+      "error",
+      "as-needed"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "semi-spacing": "error",
+    "semi-style": "error",
+    //    "sort-vars"
+    "space-before-blocks": "error",
+    "space-before-function-paren": [
+      "error",
+      {
+        "anonymous": "never",
+        "named": "never",
+        "asyncArrow": "always"
+      }
+    ],
+    "space-in-parens": "error",
+    "space-infix-ops": "error",
+    "space-unary-ops": [
+      "error",
+      {
+        "words": true,
+        "nonwords": false
+      }
+    ],
+    "spaced-comment": [
+      "error",
+      "always",
+      {
+        "line": {
+          "markers": ["/"],
+          "exceptions": ["/"]
+        },
+        "block": {
+          "exceptions": ["*"],
+          "balanced": true
+        }
+      }
+    ],
+    "switch-colon-spacing": "error",
+    "template-tag-spacing": "error",
+    "unicode-bom": "error",
+    "arrow-body-style": "error",
+    "arrow-parens": [
+      "error",
+      "as-needed"
+    ],
+    "arrow-spacing": "error",
+    "generator-star-spacing": "error",
+    "rest-spread-spacing": "error",
+    "template-curly-spacing": "error",
+    "yield-star-spacing": "error"
+  },
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
+      ],
+      "rules": {
+        "brace-style": "off",
+        "@typescript-eslint/brace-style": [
+          "error",
+          "1tbs",
+          {
+            "allowSingleLine": false
+          }
+        ],
+        "comma-dangle": "off",
+        "@typescript-eslint/comma-dangle": [
+          "error",
+          "only-multiline"
+        ],
+        "comma-spacing": "off",
+        "@typescript-eslint/comma-spacing": "error",
+        "func-call-spacing": "off",
+        "@typescript-eslint/func-call-spacing": "error",
+        "keyword-spacing": "off",
+        "@typescript-eslint/keyword-spacing": "error",
+        "lines-between-class-members": "off",
+        "@typescript-eslint/lines-between-class-members": [
+          "error",
+          "always",
+          {
+            "exceptAfterSingleLine": true
+          }
+        ],
+        "no-extra-parens": "off",
+        "@typescript-eslint/no-extra-parens": ["error", "all", { "nestedBinaryExpressions": false }],
+        "no-extra-semi": "off",
+        "@typescript-eslint/no-extra-semi": "error",
+        "object-curly-spacing": "off",
+        "@typescript-eslint/object-curly-spacing": [
+          "error",
+          "always"
+        ],
+        "quotes": "off",
+        "@typescript-eslint/quotes": [
+          "error",
+          "single"
+        ],
+        "semi": "off",
+        "@typescript-eslint/semi": [
+          "error",
+          "always"
+        ],
+        "space-before-function-paren": "off",
+        "@typescript-eslint/space-before-function-paren": [
+          "error",
+          {
+            "anonymous": "never",
+            "named": "never",
+            "asyncArrow": "always"
+          }
+        ],
+        "space-infix-ops": "off",
+        "@typescript-eslint/space-infix-ops": "error",
+        "@typescript-eslint/type-annotation-spacing": "error",
+        "@typescript-eslint/explicit-member-accessibility": [
+          "error",
+          {
+            "accessibility": "explicit",
+            "overrides": {
+              "constructors": "no-public"
+            }
+          }
+        ],
+        "@typescript-eslint/member-delimiter-style": "error",
+        "@typescript-eslint/no-inferrable-types": [
+          "error",
+          {
+            "ignoreParameters": true
+          }
+        ],
+        "@typescript-eslint/triple-slash-reference": "off",
+        "@typescript-eslint/no-namespace": "off",
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": ["error", { "vars": "all", "args": "none" }],
+        "no-empty-function": "off",
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/no-empty-interface": "off"
+      }
+    }
+  ]
+}
