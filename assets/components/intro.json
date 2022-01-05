@@ -1,0 +1,86 @@
+{
+  "type": "container",
+  "instance": "root",
+  "children": [
+    {
+      "type": "sprite",
+      "key": "sprites/UI/info_plate_big.png"
+    },
+    {
+      "type": "sprite",
+      "key": "sprites/UI/header_info_plate.png",
+      "x": 84,
+      "y": 4
+    },
+    {
+      "type": "text",
+      "text": "Твои рекорды:",
+      "color": "0x003D71",
+      "align": "center",
+      "size": 60,
+      "y": 12
+    },
+    {
+      "type": "text",
+      "text": "Рекорд:",
+      "color": "0x00FD17",
+      "align": "center",
+      "size": 60,
+      "y": 108
+    },
+    {
+      "type": "text",
+      "instance": "record",
+      "color": "0x00FD17",
+      "align": "center",
+      "size": 60,
+      "y": 180
+    },
+    {
+      "type": "btn",
+      "up": "sprites/UI/login_button_active.png",
+      "hover": "sprites/UI/login_button_hover.png",
+      "down": "sprites/UI/login_button_press.png",
+      "x": 220,
+      "y": 297
+    },
+    {
+      "type": "container",
+      "x": 80,
+      "y": 508,
+      "children": [
+        {
+          "type": "sprite",
+          "key": "sprites/UI/user_name_bar.png"
+        },
+        {
+          "type": "text",
+          "text": "Guest_12345",
+          "color": "0xFFF",
+          "align": "left",
+          "size": 50,
+          "y": 22,
+          "padding": 20
+        }
+      ]
+    },
+    {
+      "type": "btn",
+      "instance": "leaderboardBtn",
+      "up": "sprites/UI/leadboard_button_active.png",
+      "hover": "sprites/UI/leadboard_button_hover.png",
+      "down": "sprites/UI/leadboard_button_press.png",
+      "x": 53,
+      "y": 660
+    },
+    {
+      "type": "btn",
+      "instance": "playBtn",
+      "up": "sprites/UI/play_button_active.png",
+      "hover": "sprites/UI/play_button_hover.png",
+      "down": "sprites/UI/play_button_press.png",
+      "x": 374,
+      "y": 660
+    }
+  ]
+}

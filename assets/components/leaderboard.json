@@ -1,0 +1,22 @@
+{
+  "type": "container",
+  "instance": "root",
+  "children": [
+    {
+      "type": "sprite",
+      "key": "sprites/UI/info_plate_big.png"
+    },
+    {
+      "type": "sprite",
+      "key": "sprites/UI/header_info_plate.png",
+      "x": 84,
+      "y": 4
+    },
+    {
+      "type": "text",
+      "text": "sdfsdfsd",
+      "color": "0x000",
+      "x": 350
+    }
+  ]
+}
