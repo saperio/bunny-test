@@ -1,36 +1,51 @@
 import * as PIXI from 'pixi.js';
+import Btn from 'game/ui/btn';
+
+// to apply d.ts
+import '@pixi/interaction';
 
 
 export const enum COMPONENT_TYPE {
     CONTAINER = 'container',
     SPRITE = 'sprite',
-    TEXT = 'text'
+    TEXT = 'text',
+    BTN = 'btn'
 }
 
-interface ComponentDesc {
+export interface ComponentDesc {
     type: COMPONENT_TYPE;
     instance?: string;
     x?: number;
     y?: number;
 }
 
-interface ContainerComponentDesc extends ComponentDesc {
+export interface ContainerComponentDesc extends ComponentDesc {
     type: COMPONENT_TYPE.CONTAINER;
     children?: ComponentDescAny[];
 }
 
-interface SpriteComponentDesc extends ComponentDesc {
+export interface SpriteComponentDesc extends ComponentDesc {
     type: COMPONENT_TYPE.SPRITE;
     key: string;
 }
 
-interface TextComponentDesc extends ComponentDesc {
+export interface TextComponentDesc extends ComponentDesc {
     type: COMPONENT_TYPE.TEXT;
+    text?: string;
     color?: string;
     size?: number;
+    align?: 'none' | 'left' | 'center';
+    padding?: number;
 }
 
-export type ComponentDescAny = ContainerComponentDesc | SpriteComponentDesc | TextComponentDesc;
+export interface BtnComponentDesc extends ComponentDesc {
+    type: COMPONENT_TYPE.BTN;
+    up: string;
+    hover: string;
+    down: string;
+}
+
+export type ComponentDescAny = ContainerComponentDesc | SpriteComponentDesc | TextComponentDesc | BtnComponentDesc;
 
 
 export default class Scene {
@@ -42,7 +57,6 @@ export default class Scene {
         this.app = new PIXI.Application({
             width: this.width,
             height: this.height,
-            // autoStart: false,
             resolution: window.devicePixelRatio,
             powerPreference: 'high-performance',
             autoDensity: true
@@ -91,6 +105,10 @@ export default class Scene {
             case COMPONENT_TYPE.TEXT:
                 obj = this.makeTextComponent(desc);
                 break;
+
+            case COMPONENT_TYPE.BTN:
+                obj = this.makeBtnComponent(desc);
+                break;
         }
 
         if (!obj) {
@@ -106,10 +124,7 @@ export default class Scene {
         }
     }
 
-    private makeContainerComponent<InstanceMap>(
-        desc: ContainerComponentDesc,
-        view: InstanceMap
-    ): PIXI.Container {
+    private makeContainerComponent<InstanceMap>(desc: ContainerComponentDesc, view: InstanceMap): PIXI.Container {
         const { children = [] } = desc;
         const container = new PIXI.Container();
 
@@ -127,14 +142,25 @@ export default class Scene {
     }
 
     private makeTextComponent(desc: TextComponentDesc): PIXI.Container {
-        const { color = '#ffffff', size = 30 } = desc;
+        const { color = '#ffffff', size = 30, text = null } = desc;
         const style = new PIXI.TextStyle({
             fontSize: size,
             fill: color,
             fontFamily: 'BunnyFont'
         });
 
-        return new PIXI.Text(null, style);
+        return new PIXI.Text(text, style);
+    }
+
+    private makeBtnComponent(desc: BtnComponentDesc): Btn {
+        const { up, hover, down } = desc;
+        const btn = new Btn(
+            PIXI.Texture.from(up),
+            PIXI.Texture.from(hover),
+            PIXI.Texture.from(down)
+        );
+
+        return btn;
     }
 }
 

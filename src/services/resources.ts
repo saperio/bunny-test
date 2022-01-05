@@ -3,7 +3,8 @@ import { ComponentDescAny, COMPONENT_TYPE } from 'game/services/scene';
 
 
 export const COMPONENT_ASSETS = {
-    COMPONENT_LEADERBOARD: 'leaderboard.json',
+    COMPONENT_INTRO: 'components/intro.json',
+    COMPONENT_LEADERBOARD: 'components/leaderboard.json',
 };
 
 export const enum SPRITE_ASSETS {
@@ -36,23 +37,40 @@ export default class Resources {
     }
 
     private collectWindowsAssets() {
+        let assetList: string[] = [];
         for (const name in COMPONENT_ASSETS) {
-            this.collectAssets(this.get<ComponentDescAny>(COMPONENT_ASSETS[name]));
+            assetList.push(
+                ...this.collectAssets(this.get<ComponentDescAny>(COMPONENT_ASSETS[name]))
+            );
+        }
+
+        assetList = assetList.filter((asset, idx) => assetList.indexOf(asset) === idx);
+        for (const asset of assetList) {
+            this.loader.add(asset);
         }
     }
 
-    private collectAssets(desc: ComponentDescAny) {
+    private collectAssets(desc: ComponentDescAny): string[] {
+        const assetList: string[] = [];
         switch (desc.type) {
             case COMPONENT_TYPE.CONTAINER:
                 for (const ch of desc.children || []) {
-                    this.collectAssets(ch);
+                    assetList.push(...this.collectAssets(ch));
                 }
                 break;
 
             case COMPONENT_TYPE.SPRITE:
-                this.loader.add(desc.key);
+                assetList.push(desc.key);
+                break;
+
+            case COMPONENT_TYPE.BTN:
+                assetList.push(desc.up);
+                assetList.push(desc.hover);
+                assetList.push(desc.down);
                 break;
         }
+
+        return assetList;
     }
 }
 
