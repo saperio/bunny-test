@@ -1,5 +1,10 @@
 import * as PIXI from 'pixi.js';
 import WindowBase, { BaseView } from 'game/windows/window';
+import { resources } from 'game/services/resources';
+import { ContainerComponentDesc } from 'game/services/scene';
+import { COMPONENT_ASSETS } from 'game/constants';
+import Btn from 'game/ui/btn';
+import Signal from 'game/common/signal';
 
 
 export interface EndView extends BaseView {
@@ -8,6 +13,7 @@ export interface EndView extends BaseView {
     distanceText: PIXI.Text;
     rays: PIXI.Sprite;
     stars: PIXI.Container;
+    okBtn: Btn;
 }
 
 export default class End extends WindowBase<EndView> {
@@ -19,6 +25,13 @@ export default class End extends WindowBase<EndView> {
     private timeAccum: number;
     private starDirection: number;
     private starsVelocityFactor: number[];
+
+    constructor(parent: PIXI.Container) {
+        super(
+            parent,
+            resources.get<ContainerComponentDesc>(COMPONENT_ASSETS.COMPONENT_END)
+        );
+    }
 
     public show() {
         super.show();
@@ -44,6 +57,10 @@ export default class End extends WindowBase<EndView> {
         super.hide();
 
         this.active = false;
+    }
+
+    public get okSignal(): Signal {
+        return this.view.okBtn.pressSignal;
     }
 
     private animFrame = (timestamp: number) => {

@@ -7,6 +7,7 @@ import { COMPONENT_ASSETS } from 'game/constants';
 import { leaders_all, leaders_month, leaders_week } from 'game/mock';
 import FSM from 'game/common/fsm';
 import { CancelableSequence, wait } from 'game/common/utils';
+import Signal from 'game/common/signal';
 
 
 interface LeaderbordView extends BaseView {
@@ -14,7 +15,8 @@ interface LeaderbordView extends BaseView {
     loadingText: PIXI.Text;
     leftBtn: Btn;
     rightBtn: Btn;
-    listTop: PIXI.Container;
+    list: PIXI.Container;
+    okBtn: Btn;
 }
 
 interface ItemView extends BaseView {
@@ -57,7 +59,7 @@ export default class Leaderbord extends WindowBase<LeaderbordView> {
         rightBtn.pressSignal.on(() => this.fsm.event(SIGNALS.RIGHT));
 
         this.fsm = new FSM({
-            initial: 'week',
+            initial: 'off',
             states: {
                 off: {
                     transitions: {
@@ -111,6 +113,10 @@ export default class Leaderbord extends WindowBase<LeaderbordView> {
         this.fsm.event(SIGNALS.HIDE);
     }
 
+    public get okSignal(): Signal {
+        return this.view.okBtn.pressSignal;
+    }
+
     protected updateAlign() {
         super.updateAlign();
 
@@ -139,7 +145,7 @@ export default class Leaderbord extends WindowBase<LeaderbordView> {
         const interval = 3;
         for (let i = 0; i < this.itemComponentDescs.length; ++i) {
             const desc = this.itemComponentDescs[i];
-            const view = scene.make<ItemView>(this.view.listTop, desc);
+            const view = scene.make<ItemView>(this.view.list, desc);
             const { placeText } = view;
 
             if (placeText) {

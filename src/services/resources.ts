@@ -14,18 +14,22 @@ export default class Resources {
         }
 
         // load components
-        await new Promise<void>(resolve => this.loader.load(() => resolve()));
+        await this.doLoad();
 
         // load sprites from components, we need to load them explicit, to calculate
         // bounds on window creation
         this.collectWindowsAssets();
 
         // load sprites
-        await new Promise<void>(resolve => this.loader.load(() => resolve()));
+        await this.doLoad();
     }
 
     public get<T = never>(name: string): T {
         return PIXI.Loader.shared.resources[name]?.data;
+    }
+
+    private doLoad(): Promise<void> {
+        return new Promise<void>(resolve => this.loader.load(() => resolve()));
     }
 
     private collectWindowsAssets() {

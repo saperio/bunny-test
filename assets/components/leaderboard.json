@@ -58,7 +58,7 @@
     },
     {
       "type": "container",
-      "instance": "listTop",
+      "instance": "list",
       "x": 28,
       "y": 187
     },

@@ -1,0 +1,61 @@
+{
+  "type": "container",
+  "instance": "root",
+  "children": [
+    {
+      "type": "sprite",
+      "key": "sprites/UI/coin_score_plate.png",
+      "x": 40,
+      "y": 20
+    },
+    {
+      "type": "sprite",
+      "key": "sprites/UI/collect_coin_icon.png",
+      "x": 10,
+      "y": 10
+    },
+    {
+      "type": "text",
+      "text": "10",
+      "color": "0xFFF",
+      "size": 60,
+      "x": 120,
+      "y": 15
+    },
+    {
+      "type": "btn",
+      "up": "sprites/UI/btn_fullscreen_active.png",
+      "hover": "sprites/UI/btn_fullscreen_hover.png",
+      "down": "sprites/UI/btn_fullscreen_press.png",
+      "x": 1500,
+      "y": 10
+    },
+    {
+      "type": "btn",
+      "instance": "onSoundBtn",
+      "up": "sprites/UI/btn_sound_1_active.png",
+      "hover": "sprites/UI/btn_sound_1_hover.png",
+      "down": "sprites/UI/btn_sound_1_press.png",
+      "x": 1640,
+      "y": 10
+    },
+    {
+      "type": "btn",
+      "instance": "offSoundBtn",
+      "up": "sprites/UI/btn_sound_0_active.png",
+      "hover": "sprites/UI/btn_sound_0_hover.png",
+      "down": "sprites/UI/btn_sound_0_press.png",
+      "x": 1640,
+      "y": 10
+    },
+    {
+      "type": "btn",
+      "instance": "pauseBtn",
+      "up": "sprites/UI/btn_pause_active.png",
+      "hover": "sprites/UI/btn_pause_hover.png",
+      "down": "sprites/UI/btn_pause_press.png",
+      "x": 1780,
+      "y": 10
+    }
+  ]
+}

@@ -1,12 +1,12 @@
-export default class Signal<Payload = void> {
+export default class Signal {
     private readonly et = new EventTarget();
 
-    public on(cb: (payload: Payload) => void) {
-        const wraper = (evt: CustomEvent) => cb(evt.detail);
+    public on(cb: () => void) {
+        const wraper = (evt: CustomEvent) => cb();
         this.et.addEventListener('e', wraper);
     }
 
-    public dispatch(payload: Payload) {
-        this.et.dispatchEvent(new CustomEvent('e', { detail: payload }));
+    public dispatch() {
+        this.et.dispatchEvent(new CustomEvent('e'));
     }
 }
