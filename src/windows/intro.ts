@@ -1,12 +1,12 @@
 import * as PIXI from 'pixi.js';
-import WindowBase, { WindowBaseView } from 'game/windows/window';
+import WindowBase, { BaseView } from 'game/windows/window';
 
 
-export interface LeaderbordView extends WindowBaseView {
+export interface IntroView extends BaseView {
     record: PIXI.Text;
 }
 
-export default class Leaderbord extends WindowBase<LeaderbordView> {
+export default class Intro extends WindowBase<IntroView> {
     public show() {
         super.show();
 

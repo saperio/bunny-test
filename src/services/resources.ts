@@ -1,15 +1,7 @@
 import * as PIXI from 'pixi.js';
 import { ComponentDescAny, COMPONENT_TYPE } from 'game/services/scene';
+import { COMPONENT_ASSETS } from 'game/constants';
 
-
-export const COMPONENT_ASSETS = {
-    COMPONENT_INTRO: 'components/intro.json',
-    COMPONENT_LEADERBOARD: 'components/leaderboard.json',
-};
-
-export const enum SPRITE_ASSETS {
-    WINDOW_BACK = 'info_plate_big'
-}
 
 export default class Resources {
     private loader: PIXI.Loader;

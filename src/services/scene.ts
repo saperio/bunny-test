@@ -17,6 +17,8 @@ export interface ComponentDesc {
     instance?: string;
     x?: number;
     y?: number;
+    scaleX?: number;
+    scaleY?: number;
 }
 
 export interface ContainerComponentDesc extends ComponentDesc {
@@ -27,6 +29,8 @@ export interface ContainerComponentDesc extends ComponentDesc {
 export interface SpriteComponentDesc extends ComponentDesc {
     type: COMPONENT_TYPE.SPRITE;
     key: string;
+    anchorX?: number;
+    anchorY?: number;
 }
 
 export interface TextComponentDesc extends ComponentDesc {
@@ -49,8 +53,8 @@ export type ComponentDescAny = ContainerComponentDesc | SpriteComponentDesc | Te
 
 
 export default class Scene {
-    public readonly width = 1280;
-    public readonly height = 1000;
+    public readonly width = 1920;
+    public readonly height = 1200;
     private app: PIXI.Application;
 
     public init() {
@@ -90,7 +94,14 @@ export default class Scene {
     }
 
     private makeComponent<InstanceMap>(parent: PIXI.Container, desc: ComponentDescAny, view: InstanceMap) {
-        const { type, instance, x = 0, y = 0 } = desc;
+        const {
+            type,
+            instance,
+            x = 0,
+            y = 0,
+            scaleX = 1,
+            scaleY = 1
+        } = desc;
         let obj: PIXI.Container;
 
         switch (type) {
@@ -117,6 +128,7 @@ export default class Scene {
 
         obj.x = x;
         obj.y = y;
+        obj.scale.set(scaleX, scaleY);
         parent.addChild(obj);
 
         if (instance) {
@@ -136,9 +148,12 @@ export default class Scene {
     }
 
     private makeSpriteComponent(desc: SpriteComponentDesc): PIXI.Container {
-        const { key } = desc;
+        const { key, anchorX = 0, anchorY = 0 } = desc;
+        const sprite = PIXI.Sprite.from(key);
 
-        return PIXI.Sprite.from(key);
+        sprite.anchor.set(anchorX, anchorY);
+
+        return sprite;
     }
 
     private makeTextComponent(desc: TextComponentDesc): PIXI.Container {
