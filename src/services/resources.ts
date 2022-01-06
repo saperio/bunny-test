@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js';
 import { ComponentDescAny, COMPONENT_TYPE } from 'game/services/scene';
-import { COMPONENT_ASSETS } from 'game/constants';
+import { COMPONENT_ASSETS, GAME_ASSETS } from 'game/constants';
 
 
 export default class Resources {
@@ -13,7 +13,11 @@ export default class Resources {
             this.loader.add(COMPONENT_ASSETS[name]);
         }
 
-        // load components
+        for (const name in GAME_ASSETS) {
+            this.loader.add(GAME_ASSETS[name]);
+        }
+
+        // load components and game assets
         await this.doLoad();
 
         // load sprites from components, we need to load them explicit, to calculate

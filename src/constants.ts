@@ -12,3 +12,11 @@ export const COMPONENT_ASSETS = {
     // game
     HUD: 'components/hud.json',
 };
+
+export const GAME_ASSETS = {
+    BUNNY: 'sprites/Characters/mi_bunny_idle_03.png',
+    GROUND: 'sprites/Environment/floor.png',
+    BACK: 'sprites/Environment/bg_gradient.png',
+    ROCS: 'sprites/Environment/back_rocks.png',
+    SUN: 'sprites/Environment/bg_sun.png'
+};

@@ -49,6 +49,7 @@ export default class Leaderbord extends WindowBase<LeaderbordView> {
             resources.get<ContainerComponentDesc>(COMPONENT_ASSETS.COMPONENT_LEADERBOARD)
         );
 
+        this.defaultBtn = this.view.okBtn;
         this.itemViews = [];
         this.itemComponentDescs = [];
 

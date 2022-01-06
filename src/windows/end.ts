@@ -31,6 +31,8 @@ export default class End extends WindowBase<EndView> {
             parent,
             resources.get<ContainerComponentDesc>(COMPONENT_ASSETS.COMPONENT_END)
         );
+
+        this.defaultBtn = this.view.okBtn;
     }
 
     public show() {

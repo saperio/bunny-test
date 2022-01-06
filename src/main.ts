@@ -1,4 +1,5 @@
 import { scene } from 'game/services/scene';
+import { input } from 'game/services/input';
 import { resources } from 'game/services/resources';
 import Leaderboard from 'game/windows/leaderboard';
 import Intro from 'game/windows/intro';
@@ -17,12 +18,22 @@ const enum SIGNALS {
     GAME_PAUSE = 'pause'
 }
 
+interface DefaultActionConsumer {
+    defaultActionDown: () => void;
+    defaultActionUp?: () => void;
+}
+
 async function run() {
     scene.init();
     await resources.init();
 
     const game = new Game(scene.root);
     game.pauseSignal.on(() => fsm.event(SIGNALS.GAME_PAUSE));
+    game.endGameSignal.on(() => fsm.event(SIGNALS.GAME_END));
+
+    let defaultActionConsumer: DefaultActionConsumer;
+    input.defaultActionDownSignal.on(() => defaultActionConsumer?.defaultActionDown());
+    input.defaultActionUpSignal.on(() => defaultActionConsumer?.defaultActionUp?.());
 
     let intro: Intro;
     const initIntro = () => {
@@ -62,9 +73,11 @@ async function run() {
                 enter: () => {
                     initIntro();
                     intro.show();
+                    defaultActionConsumer = intro;
                 },
                 exit: () => {
                     intro.hide();
+                    defaultActionConsumer = null;
                 },
                 transitions: {
                     [SIGNALS.PLAY]: 'play',
@@ -75,9 +88,11 @@ async function run() {
                 enter: () => {
                     initLeaderboard();
                     leaderboard.show();
+                    defaultActionConsumer = leaderboard;
                 },
                 exit: () => {
                     leaderboard.hide();
+                    defaultActionConsumer = null;
                 },
                 transitions: {
                     [SIGNALS.OK]: 'init',
@@ -86,10 +101,11 @@ async function run() {
             play: {
                 enter: () => {
                     game.pause(false);
-                    setTimeout(() => fsm.event(SIGNALS.GAME_END), 1000);
+                    defaultActionConsumer = game;
                 },
                 exit: () => {
                     game.pause(true);
+                    defaultActionConsumer = null;
                 },
                 transitions: {
                     [SIGNALS.GAME_END]: 'end',
@@ -105,9 +121,11 @@ async function run() {
                 enter: () => {
                     initEnd();
                     end.show();
+                    defaultActionConsumer = end;
                 },
                 exit: () => {
                     end.hide();
+                    defaultActionConsumer = null;
                 },
                 transitions: {
                     [SIGNALS.OK]: 'leaderboard'
@@ -115,5 +133,4 @@ async function run() {
             },
         }
     });
-
 }

@@ -19,6 +19,8 @@ export default class Intro extends WindowBase<IntroView> {
             parent,
             resources.get<ContainerComponentDesc>(COMPONENT_ASSETS.COMPONENT_INTRO)
         );
+
+        this.defaultBtn = this.view.playBtn;
     }
 
     public show() {

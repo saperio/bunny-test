@@ -1,5 +1,6 @@
 import * as PIXI from 'pixi.js';
 import { scene, ContainerComponentDesc, COMPONENT_TYPE } from 'game/services/scene';
+import Btn from 'game/ui/btn';
 
 
 export interface BaseView {
@@ -8,6 +9,7 @@ export interface BaseView {
 
 export default abstract class WindowBase<View extends BaseView> {
     protected readonly view: View;
+    protected defaultBtn: Btn;
     private readonly componentDesc: ContainerComponentDesc;
 
     constructor(parent: PIXI.Container, componentDesc: ContainerComponentDesc) {
@@ -28,6 +30,14 @@ export default abstract class WindowBase<View extends BaseView> {
 
     public hide() {
         this.view.root.visible = false;
+    }
+
+    public defaultActionDown() {
+        this.defaultBtn?.forceDown();
+    }
+
+    public defaultActionUp() {
+        this.defaultBtn?.forceUp();
     }
 
     protected updateAlign() {

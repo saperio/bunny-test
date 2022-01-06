@@ -29,6 +29,14 @@ export default class Btn extends PIXI.Sprite {
             .on('pointerout', this.onPointerOut);
     }
 
+    public forceDown() {
+        this.onPointerDown();
+    }
+
+    public forceUp() {
+        this.onPointerUp();
+    }
+
     private onPointerUp = () => {
         this.texture = this.up;
         this.pressed = false;
