@@ -14,9 +14,62 @@
     },
     {
       "type": "text",
-      "text": "sdfsdfsd",
-      "color": "0x000",
-      "x": 350
+      "text": "Таблица рекордов:",
+      "color": "0x003D71",
+      "align": "center",
+      "size": 60,
+      "y": 12
+    },
+    {
+      "type": "text",
+      "instance": "sectionText",
+      "color": "0xFF6801",
+      "align": "center",
+      "size": 60,
+      "y": 115
+    },
+    {
+      "type": "btn",
+      "instance": "leftBtn",
+      "up": "sprites/UI/arrow_btn_active.png",
+      "hover": "sprites/UI/arrow_btn_hover.png",
+      "down": "sprites/UI/arrow_btn_press.png",
+      "x": 125,
+      "y": 115,
+      "scaleX": -1
+    },
+    {
+      "type": "btn",
+      "instance": "rightBtn",
+      "up": "sprites/UI/arrow_btn_active.png",
+      "hover": "sprites/UI/arrow_btn_hover.png",
+      "down": "sprites/UI/arrow_btn_press.png",
+      "x": 625,
+      "y": 115
+    },
+    {
+      "type": "btn",
+      "instance": "okBtn",
+      "up": "sprites/UI/ok_button_active.png",
+      "hover": "sprites/UI/ok_button_hover.png",
+      "down": "sprites/UI/ok_button_press.png",
+      "x": 265,
+      "y": 765
+    },
+    {
+      "type": "container",
+      "instance": "listTop",
+      "x": 28,
+      "y": 187
+    },
+    {
+      "type": "text",
+      "text": "Загрузка...",
+      "instance": "loadingText",
+      "color": "0x073A63",
+      "align": "center",
+      "size": 60,
+      "y": 400
     }
   ]
 }

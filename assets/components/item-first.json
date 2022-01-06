@@ -1,0 +1,39 @@
+{
+  "type": "container",
+  "instance": "root",
+  "children": [
+    {
+      "type": "sprite",
+      "key": "sprites/UI/place_1.png"
+    },
+    {
+      "type": "text",
+      "instance": "nameText",
+      "color": "0xC16001",
+      "size": 50,
+      "x": 80,
+      "y": 10
+    },
+    {
+      "type": "container",
+      "x": 510,
+      "children": [
+        {
+          "type": "sprite",
+          "key": "sprites/UI/highleader_scores_plate.png",
+          "x": 7,
+          "y": 15
+        },
+        {
+          "type": "text",
+          "instance": "scoreText",
+          "align": "center",
+          "color": "0xC16001",
+          "padding": 5,
+          "size": 50,
+          "y": 10
+        }
+      ]
+    }
+  ]
+}

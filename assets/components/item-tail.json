@@ -1,0 +1,49 @@
+{
+  "type": "container",
+  "instance": "root",
+  "children": [
+    {
+      "type": "text",
+      "instance": "placeText",
+      "color": "0xFFF",
+      "size": 36,
+      "x": 24,
+      "y": 4
+    },
+    {
+      "type": "sprite",
+      "key": "sprites/UI/midleader_name_plate.png",
+      "x": 70,
+      "y": 7
+    },
+    {
+      "type": "text",
+      "instance": "nameText",
+      "color": "0x0",
+      "size": 36,
+      "x": 85,
+      "y": 5
+    },
+    {
+      "type": "container",
+      "x": 510,
+      "children": [
+        {
+          "type": "sprite",
+          "key": "sprites/UI/midleader_scores_plate.png",
+          "x": 15,
+          "y": 7
+        },
+        {
+          "type": "text",
+          "instance": "scoreText",
+          "align": "center",
+          "color": "0x0",
+          "padding": 10,
+          "size": 36,
+          "y": 5
+        }
+      ]
+    }
+  ]
+}
